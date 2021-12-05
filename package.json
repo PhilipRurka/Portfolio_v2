@@ -1,0 +1,35 @@
+{
+  "name": "philip-rurka-s-portfolio-v2",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Philip Rurka's Portfolio v2",
+  "author": {
+    "name": "Philip Rurka",
+    "email": "hey@philiprurka.com",
+    "url": "https://philiprurka.com"
+  },
+  "homepage": "https://philiprurka.com",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "babel-plugin-styled-components": "^2.0.2",
+    "dotenv": "^10.0.0",
+    "gatsby": "^4.3.0",
+    "gatsby-plugin-image": "^2.3.0",
+    "gatsby-plugin-sharp": "^4.3.0",
+    "gatsby-plugin-sitemap": "^5.3.0",
+    "gatsby-plugin-styled-components": "^5.3.0",
+    "gatsby-source-contentful": "^7.1.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.3.3"
+  }
+}
