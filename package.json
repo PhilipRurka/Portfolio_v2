@@ -13,13 +13,14 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
+    "develop": "gatsby clean & gatsby develop",
+    "start": "gatsby clean && gatsby develop",
+    "build": "gatsby clean && gatsby build",
+    "serve": "gatsby clean && gatsby serve",
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@types/styled-components": "^5.1.17",
     "babel-plugin-styled-components": "^2.0.2",
     "dotenv": "^10.0.0",
     "gatsby": "^4.3.0",
@@ -30,6 +31,7 @@
     "gatsby-source-contentful": "^7.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "styled-reset": "^4.3.4"
   }
 }
