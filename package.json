@@ -15,9 +15,11 @@
   "scripts": {
     "develop": "gatsby clean & gatsby develop",
     "start": "gatsby clean && gatsby develop",
-    "build": "gatsby clean && gatsby build",
+    "build": "yarn type-check && gatsby clean && gatsby build",
     "serve": "gatsby clean && gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "type-check": "yarn tsc --noEmit",
+    "type-check:watch": "yarn type-check -- --watch"
   },
   "dependencies": {
     "@types/styled-components": "^5.1.17",
@@ -33,5 +35,23 @@
     "react-dom": "^17.0.1",
     "styled-components": "^5.3.3",
     "styled-reset": "^4.3.4"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.12",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "@types/react-helmet": "^6.1.4",
+    "@types/typography": "^0.16.4",
+    "gatsby-plugin-typescript": "^4.3.0",
+    "source-map-support": "^0.5.21",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.3"
+  },
+  "ntl": {
+    "descriptions": {
+      "build": "Type Checks && Clears cached goods && builds static pages",
+      "start": "Clears cached goods && start server",
+      "type-check": "Type Checks"
+    }
   }
 }

@@ -10,7 +10,7 @@ import {
   Name
 } from './Header.styled';
 
-const Header: FC = () => {
+const Header: FC<any> = () => {
   return (
     <HeaderStyled>
       <TopNav>
