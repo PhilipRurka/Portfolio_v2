@@ -1,6 +1,6 @@
 import React from 'react';
 import { GatsbyBrowser, GatsbySSR } from "gatsby";
-import Layout from '../components/wrappers/Layout';
+import Layout from '../src/components/wrappers/Layout';
 
 type WrapPageElement =
   | GatsbyBrowser["wrapPageElement"]

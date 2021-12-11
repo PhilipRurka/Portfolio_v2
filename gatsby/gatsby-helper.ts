@@ -1,4 +1,4 @@
-import { QueryDataPages_type } from "../../gatsby-node";
+import { QueryDataPages_type } from "../gatsby-node";
 
 // interface Result_type {
 
