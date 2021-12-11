@@ -1,26 +1,10 @@
-require('dotenv').config();
-const {
-  REACT_APP_ACCESS_TOKEN,
-  REACT_APP_SPACE_ID
-} = process.env
+'use strict';
 
-module.exports = {
-  siteMetadata: {
-    siteUrl: "https://www.philiprurka.com",
-    title: "Philip Rurka's Portfolio v2",
-  },
-  plugins: [
-    {
-      resolve: "gatsby-source-contentful",
-      options: {
-        accessToken: REACT_APP_ACCESS_TOKEN,
-        spaceId: REACT_APP_SPACE_ID,
-      },
-    },
-    "gatsby-plugin-styled-components",
-    "gatsby-plugin-sitemap",
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
-    `gatsby-plugin-typescript`
-  ],
-};
+/**
+* Source-map-support mimics node's stack trace making debugging easier
+* ts-node register helps importing and compiling TypeScript modules into JS
+*/
+require('source-map-support').install();
+require('ts-node').register();
+
+module.exports = require('./src/gatsby/gatsby-config');
