@@ -1,9 +1,5 @@
 import { QueryDataPages_type } from "../gatsby-node";
 
-// interface Result_type {
-
-// }
-
 const pageLists = [
   'Home',
   'Resume'
