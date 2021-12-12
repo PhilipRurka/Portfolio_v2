@@ -19,22 +19,27 @@
     "serve": "gatsby clean && gatsby serve",
     "clean": "gatsby clean",
     "type-check": "yarn tsc --noEmit",
-    "type-check:watch": "yarn type-check -- --watch"
+    "type-check:watch": "yarn type-check -- --watch",
+    "codegen": "contentful-typescript-codegen --output @types/generated/contentful.d.ts"
   },
   "dependencies": {
     "@types/styled-components": "^5.1.17",
     "babel-plugin-styled-components": "^2.0.2",
+    "contentful-typescript-codegen": "^3.2.3",
     "dotenv": "^10.0.0",
     "gatsby": "^4.3.0",
+    "gatsby-plugin-graphql-codegen": "^3.1.0",
     "gatsby-plugin-image": "^2.3.0",
     "gatsby-plugin-sharp": "^4.3.0",
     "gatsby-plugin-sitemap": "^5.3.0",
     "gatsby-plugin-styled-components": "^5.3.0",
     "gatsby-source-contentful": "^7.1.0",
+    "graphql": "^16.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "styled-components": "^5.3.3",
-    "styled-reset": "^4.3.4"
+    "styled-reset": "^4.3.4",
+    "typescript": "^4.5.3"
   },
   "devDependencies": {
     "@types/node": "^16.11.12",
@@ -44,14 +49,14 @@
     "@types/typography": "^0.16.4",
     "gatsby-plugin-typescript": "^4.3.0",
     "source-map-support": "^0.5.21",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.5.3"
+    "ts-node": "^10.4.0"
   },
   "ntl": {
     "descriptions": {
       "build": "Type Checks && Clears cached goods && builds static pages",
       "start": "Clears cached goods && start server",
-      "type-check": "Type Checks"
+      "type-check": "Type Checks",
+      "codegen": "Create and store latest Contentful types"
     }
   }
 }

@@ -1,6 +1,6 @@
 import { GatsbyNode } from 'gatsby';
 import * as path from 'path';
-import { getQueryData } from './src/gatsby/gatsby-helper';
+import { getQueryData } from './gatsby/gatsby-helper';
 
 export interface QueryDataPages_type {
   slug: string;
