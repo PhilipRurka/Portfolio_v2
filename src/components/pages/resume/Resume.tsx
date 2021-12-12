@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { IPageResumeFields } from '../../../../@types/generated/contentful';
-import { ContentfulPageResumeContentFilterInput } from '../../../../gatsby/gatsby-graphql';
 import {
   ResumeStyled
 } from './Resume.styled';
+import { renderRichText } from "gatsby-source-contentful/rich-text"
 
 const Resume: FC<{ data: IPageResumeFields }> = (props) => {
   const {
@@ -12,14 +12,13 @@ const Resume: FC<{ data: IPageResumeFields }> = (props) => {
     content,
   } = props.data
 
-  const { raw } = content as ContentfulPageResumeContentFilterInput;
-
   return (
     <ResumeStyled>
       <h1>{title}</h1>
-      {tags.map(tag => (
-        <h2>{tag}</h2>
+      {tags.map((tag, i) => (
+        <h2 key={i}>{tag}</h2>
       ))}
+      {renderRichText(content as any)}
 
     </ResumeStyled>
   );

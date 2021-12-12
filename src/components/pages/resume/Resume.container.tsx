@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { graphql, PageProps, useStaticQuery } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import Resume from './Resume';
 import { IPageResumeFields } from '../../../../@types/generated/contentful';
 
@@ -7,24 +7,24 @@ interface ResumePage_type {
   contentfulPageResume: IPageResumeFields
 }
 
-const ResumeContainer: FC<PageProps> = (props) => {
-    const queryData: ResumePage_type = useStaticQuery(graphql`
-    query Resumepage {
-      contentfulPageResume {
-        content {
-          raw
-        }
-        tags
-        title
-      }
-    }
-  `);
-
+const ResumeContainer: FC<PageProps<ResumePage_type>> = (props) => {
   const {
     contentfulPageResume: data
-  } = queryData;
+  } = props.data;
 
   return <Resume data={data} />;
 };
+
+export const query = graphql`
+  query Resumepage {
+    contentfulPageResume {
+      content {
+        raw
+      }
+      tags
+      title
+    }
+  }
+`
 
 export default ResumeContainer;
