@@ -1,9 +1,11 @@
 import dotenv from 'dotenv';
-dotenv.config()
+dotenv.config({
+  path: '.env'
+})
 
 const {
-  REACT_APP_ACCESS_TOKEN,
-  REACT_APP_SPACE_ID
+  GATSBY_ACCESS_TOKEN,
+  GATSBY_SPACE_ID
 } = process.env
 
 export default {
@@ -12,17 +14,27 @@ export default {
     title: "Philip Rurka's Portfolio v2",
   },
   plugins: [
-    {
-      resolve: "gatsby-source-contentful",
-      options: {
-        accessToken: REACT_APP_ACCESS_TOKEN,
-        spaceId: REACT_APP_SPACE_ID,
-      },
-    },
     "gatsby-plugin-styled-components",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
-    `gatsby-plugin-typescript`
-  ],
+    `gatsby-plugin-typescript`,
+    {
+      resolve: "gatsby-source-contentful",
+      options: {
+        accessToken: GATSBY_ACCESS_TOKEN,
+        spaceId: GATSBY_SPACE_ID,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-graphql-codegen`,
+      options: {
+        fileName: `./gatsby/gatsby-graphql.ts`,
+        documentPaths: [
+          './src/**/*.{ts,tsx}',
+          './node_modules/gatsby-*/**/*.js'
+        ]
+      }
+    }
+  ]
 };

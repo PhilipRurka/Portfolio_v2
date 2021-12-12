@@ -1,4 +1,27 @@
 import { QueryDataPages_type } from "../gatsby-node";
+import { ContentfulPageHomeSys, Query } from "./gatsby-graphql";
+
+interface Result_type {
+  data: {
+    allContentfulPageHome: Nodes_type;
+    allContentfulPageResume: Nodes_type;
+  }
+};
+
+interface Nodes_type {
+  nodes: Content_type[];
+};
+
+interface Content_type {
+  slug: string;
+  sys: {
+    contentType: {
+      sys: {
+        id: string;
+      }
+    }
+  }
+};
 
 const pageLists = [
   'Home',
@@ -24,10 +47,11 @@ export const getQueryData = async (graphql: any): Promise<QueryDataPages_type[]>
     }`
   };
 
-  const result = await graphql(`query MyQuery { ${innerQuery} }`);
+  const result: Result_type = await graphql(`query PagesTest { ${innerQuery} }`);
 
   let formattedData: QueryDataPages_type[] = [];
-  for (const key in result.data) {
+  let key: keyof typeof result.data;
+  for (key in result.data) {
     const {
       nodes: [{
         slug,
@@ -41,4 +65,4 @@ export const getQueryData = async (graphql: any): Promise<QueryDataPages_type[]>
   };
 
   return formattedData;
-}
+};
