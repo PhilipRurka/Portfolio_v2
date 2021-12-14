@@ -2,7 +2,7 @@
 
 import React, { FC } from 'react';
 import { WrapPageElementBrowserArgs } from "gatsby";
-import Layout from '../src/components/wrappers/Layout';
+import Layout from '../src/components/Layout';
 
 interface WrapPageElement_type extends WrapPageElementBrowserArgs {
  element: any
