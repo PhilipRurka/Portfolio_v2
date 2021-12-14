@@ -9,7 +9,6 @@ import {
   TagWrapper
 } from './Resume.styled';
 import { renderRichText } from "gatsby-source-contentful/rich-text";
-import Header from "../../header/Header.container";
 import { PageWrapper } from '../../../styled/layout';
 
 interface Resume_type {
@@ -25,7 +24,6 @@ const Resume: FC<Resume_type> = (props) => {
 
   return (
     <PageWrapper>
-      <Header />
       <ResumeStyled>
         <Title>{title}</Title>
         <Tags>
