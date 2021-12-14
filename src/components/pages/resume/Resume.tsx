@@ -1,26 +1,46 @@
 import React, { FC } from 'react';
 import { IPageResumeFields } from '../../../../@types/generated/contentful';
 import {
-  ResumeStyled
+  Content,
+  ResumeStyled,
+  Tag,
+  Tags,
+  Title,
+  TagWrapper
 } from './Resume.styled';
-import { renderRichText } from "gatsby-source-contentful/rich-text"
+import { renderRichText } from "gatsby-source-contentful/rich-text";
+import Header from "../../header/Header.container";
+import { PageWrapper } from '../../../styled/layout';
 
-const Resume: FC<{ data: IPageResumeFields }> = (props) => {
+interface Resume_type {
+  data: IPageResumeFields;
+};
+
+const Resume: FC<Resume_type> = (props) => {
   const {
     title,
     tags,
     content,
-  } = props.data
+  } = props.data;
 
   return (
-    <ResumeStyled>
-      <h1>{title}</h1>
-      {tags.map((tag, i) => (
-        <h2 key={i}>{tag}</h2>
-      ))}
-      {renderRichText(content as any)}
+    <PageWrapper>
+      <Header />
+      <ResumeStyled>
+        <Title>{title}</Title>
+        <Tags>
+        {tags.map((tag, i) => (
+          <TagWrapper key={`tag-${i}`}>
+            <Tag>{tag}</Tag>
+          </TagWrapper>
+        ))}  
+        </Tags>
+        <Content>
+          {renderRichText(content as any)}
+        </Content>
 
-    </ResumeStyled>
+      </ResumeStyled>
+    </PageWrapper>
   );
 };
 

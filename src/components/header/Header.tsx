@@ -1,35 +1,54 @@
+import { Link } from 'gatsby';
 import React, { FC } from 'react';
+import { HeaderQuery } from '../../../@types/generated/graphql';
 import {
   HeaderStyled,
-  TopNav,
-  BottomNav, 
-  BurgerNav,
-  MobileNav,
+  // BurgerNav,
+  // MobileNav,
   Branding,
   Logo,
-  Name
+  Name,
+  BrandingLinks,
+  PageLinks,
+  Links,
+  LinkWrapper
 } from './Header.styled';
 
-const Header: FC<any> = () => {
+const Header: FC<QueryData<HeaderQuery>> = (props) => {
+
+  const menuLinks = props.queryData.site?.siteMetadata?.menuLinks;
+
   return (
     <HeaderStyled>
-      <TopNav>
+      <BrandingLinks>
         <Branding>
           <Logo />
           <Name>
             Philip Rurka
           </Name>
         </Branding>
-      </TopNav>
-      <BottomNav>
+      </BrandingLinks>
+      <PageLinks>
+        <Links>
+          {menuLinks && menuLinks.map((item, i) => {
+            if(!item || !item.link || !item.name) return <></>
 
-      </BottomNav>
-      <BurgerNav>
+            return (
+              <LinkWrapper key={`pagelink-${i}`}>
+                <Link to={item.link} >
+                  {item.name}
+                </Link>
+              </LinkWrapper>
+            )
+          })}
+        </Links>
+      </PageLinks>
+      {/* <BurgerNav>
 
       </BurgerNav>
       <MobileNav>
 
-      </MobileNav>
+      </MobileNav> */}
     </HeaderStyled>
   );
 };

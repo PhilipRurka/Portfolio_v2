@@ -4,11 +4,11 @@ export const HeaderStyled = styled.div`
   
 `;
 
-export const TopNav = styled.div`
+export const BrandingLinks = styled.div`
   
 `;
 
-export const BottomNav = styled.div`
+export const PageLinks = styled.div`
   
 `;
 
@@ -29,5 +29,13 @@ export const Logo = styled.div`
 `;
 
 export const Name = styled.div`
+  
+`;
+
+export const Links = styled.ul`
+  
+`;
+
+export const LinkWrapper = styled.li`
   
 `;

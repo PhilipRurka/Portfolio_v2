@@ -253,6 +253,13 @@ export type SiteSiteMetadata = {
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   siteUrl?: Maybe<Scalars['String']>;
+  author?: Maybe<Scalars['String']>;
+  menuLinks?: Maybe<Array<Maybe<SiteSiteMetadataMenuLinks>>>;
+};
+
+export type SiteSiteMetadataMenuLinks = {
+  name?: Maybe<Scalars['String']>;
+  link?: Maybe<Scalars['String']>;
 };
 
 export type SiteFunction = Node & {
@@ -1448,6 +1455,17 @@ export type SiteSiteMetadataFilterInput = {
   title?: InputMaybe<StringQueryOperatorInput>;
   description?: InputMaybe<StringQueryOperatorInput>;
   siteUrl?: InputMaybe<StringQueryOperatorInput>;
+  author?: InputMaybe<StringQueryOperatorInput>;
+  menuLinks?: InputMaybe<SiteSiteMetadataMenuLinksFilterListInput>;
+};
+
+export type SiteSiteMetadataMenuLinksFilterListInput = {
+  elemMatch?: InputMaybe<SiteSiteMetadataMenuLinksFilterInput>;
+};
+
+export type SiteSiteMetadataMenuLinksFilterInput = {
+  name?: InputMaybe<StringQueryOperatorInput>;
+  link?: InputMaybe<StringQueryOperatorInput>;
 };
 
 export type SiteConnection = {
@@ -1500,6 +1518,10 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___siteUrl'
+  | 'siteMetadata___author'
+  | 'siteMetadata___menuLinks'
+  | 'siteMetadata___menuLinks___name'
+  | 'siteMetadata___menuLinks___link'
   | 'port'
   | 'host'
   | 'polyfill'
@@ -3537,7 +3559,17 @@ export type ContentfulContentTypeSortInput = {
   order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
+export type HeaderQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type HeaderQuery = { site?: { siteMetadata?: { menuLinks?: Array<{ link?: string | null | undefined, name?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined } | null | undefined };
+
 export type ResumepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ResumepageQuery = { contentfulPageResume?: { tags?: Array<string | null | undefined> | null | undefined, title?: string | null | undefined, content?: { raw?: string | null | undefined } | null | undefined } | null | undefined };
+
+export type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PagesQueryQuery = { allSiteFunction: { nodes: Array<{ functionRoute: string }> }, allSitePage: { nodes: Array<{ path: string }> } };

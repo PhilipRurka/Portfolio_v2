@@ -1,5 +1,5 @@
 import { QueryDataPages_type } from "../gatsby-node";
-import { ContentfulPageHomeSys, Query } from "./gatsby-graphql";
+// import { ContentfulPageHomeSys, Query } from "./gatsby-graphql";
 
 interface Result_type {
   data: {
