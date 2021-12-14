@@ -29,10 +29,18 @@ export default {
   plugins: [
     "gatsby-plugin-styled-components",
     "gatsby-plugin-sitemap",
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
     `gatsby-plugin-typescript`,
     'gatsby-plugin-react-helmet',
+    `gatsby-plugin-image`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          backgroundColor: `transparent`
+        }
+      }
+    },
     {
       resolve: "gatsby-source-contentful",
       options: {

@@ -1,4 +1,5 @@
 import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 import React, { FC } from 'react';
 import { HeaderQuery } from '../../../@types/generated/graphql';
 import {
@@ -6,12 +7,17 @@ import {
   // BurgerNav,
   // MobileNav,
   Branding,
-  Logo,
-  Name,
   BrandingLinks,
   PageLinks,
   Links,
-  LinkWrapper
+  LinkWrapper,
+  SocialLinks,
+  Email,
+  GithubSocial,
+  LinkedinSocial,
+  GithubIcon,
+  LinkedinIcon,
+  LogoLink
 } from './Header.styled';
 
 const Header: FC<QueryData<HeaderQuery>> = (props) => {
@@ -22,11 +28,37 @@ const Header: FC<QueryData<HeaderQuery>> = (props) => {
     <HeaderStyled>
       <BrandingLinks>
         <Branding>
-          <Logo />
-          <Name>
-            Philip Rurka
-          </Name>
+          <LogoLink
+            to='/'
+            aria-label='Github Profile Link' >
+            <StaticImage
+              src='../../images/philip-rurka-logo.png'
+              width={69}
+              height={80}
+              objectFit='contain'
+              placeholder='tracedSVG'
+              alt="Philip Rurka Logo" />
+          </LogoLink>
         </Branding>
+        <SocialLinks>
+          <Email href='mailto:hey@philiprurka.com'>
+            hey@<strong>philiprurka</strong>.com
+          </Email>
+          <GithubSocial
+            href='https://github.com/philiprurka'
+            target='_blank'
+            rel="noopener noreferrer"
+            aria-label='Github Profile Link, opens in another window' >
+            <GithubIcon />
+          </GithubSocial>
+          <LinkedinSocial
+            href='https://www.linkedin.com/in/philiprurka/'
+            target='_blank'
+            rel="noopener noreferrer"
+            aria-label='Linkedin Profile Link, opens in another window' >
+            <LinkedinIcon />
+          </LinkedinSocial>
+        </SocialLinks>
       </BrandingLinks>
       <PageLinks>
         <Links>
