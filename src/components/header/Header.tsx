@@ -42,7 +42,7 @@ const Header: FC<QueryData<HeaderQuery>> = (props) => {
           </LogoLink>
         </Branding>
         <SocialLinks>
-          <Email href='mailto:hey@philiprurka.com'>
+          <Email to='mailto:hey@philiprurka.com'>
             hey@<strong>philiprurka</strong>.com
           </Email>
           <GithubSocial

@@ -2,6 +2,7 @@ import { Link as GatsbyLink } from 'gatsby';
 import styled from 'styled-components';
 import { Container } from '../../styled/layout';
 import { Colors, Fonts } from '../../styled/variables';
+import Anchor from '../anchor/Anchor';
 import { Github, Linkedin } from '../svgs';
 
 const socialIcon_share: string = `
@@ -80,15 +81,8 @@ export const SocialLinks = styled.div`
   align-items: center;
 `;
 
-export const Email = styled.a`
-${Fonts.secondary}
+export const Email = styled(Anchor)`
   flex: 1;
-  color: ${Colors.persimmon};
-  text-decoration: none;
-
-  strong {
-    font-weight: bold;
-  }
 `;
 
 export const GithubSocial = styled.a`
