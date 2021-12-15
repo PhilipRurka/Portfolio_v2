@@ -1,12 +1,14 @@
-import React from 'react';
-import { GatsbyBrowser, GatsbySSR, WrapPageElementBrowserArgs } from "gatsby";
-import Layout from '../src/components/wrappers/Layout';
+// FRONTEND: Is This Being Used?
 
-type WrapPageElement =
-  | GatsbyBrowser["wrapPageElement"]
-  | GatsbySSR["wrapPageElement"];
+import React, { FC } from 'react';
+import { WrapPageElementBrowserArgs } from "gatsby";
+import Layout from '../src/components/Layout';
 
-const wrapPageElement: WrapPageElement = ({ element, props }: WrapPageElementBrowserArgs): React.ReactElement => {
+interface WrapPageElement_type extends WrapPageElementBrowserArgs {
+ element: any
+}
+
+const wrapPageElement: FC<WrapPageElement_type> = ({ element, props }) => {
   return (
     <Layout {...props}>
       {element}
