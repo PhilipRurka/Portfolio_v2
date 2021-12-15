@@ -4,16 +4,62 @@ export const LayoutStyled = styled.div`
 
 `;
 
-const containerSize = {
-  sm:   '600px',
-  md:   '1000px',
-  lg:   '1200px',
-  full: '100vw'
+export const BreakObj = {
+  xs: {
+    breakpoint: {
+      break: 576,
+      media: '@media (min-width: 576px)',
+    },
+    container: {
+      value: 540,
+      maxWidth: 'max-width: 540px;'
+    }
+  },
+  sm: {
+    breakpoint: {
+      break: 767,
+      media: '@media (max-width: 767px)',
+    },
+    container: {
+      value: 720,
+      maxWidth: 'max-width: 720px;'
+    }
+  },
+  md: {
+    breakpoint: {
+      break: 991,
+      media: '@media (max-width: 991px)',
+    },
+    container: {
+      value: 960,
+      maxWidth: 'max-width: 960px;'
+    }
+  },
+  lg: {
+    breakpoint: {
+      break: 1199,
+      media: '@media (max-width: 1199px)',
+    },
+    container: {
+      value: 1140,
+      maxWidth: 'max-width: 1140px;'
+    }
+  },
+  xl: {
+    breakpoint: {
+      break: 1399,
+      media: '@media (max-width: 1399px)',
+    },
+    container: {
+      value: 1320,
+      maxWidth: 'max-width: 1320px;'
+    }
+  }
 } as const;
 
-export const genContainer = (size: keyof typeof containerSize): string => {
+export const Container = (size: keyof typeof BreakObj): string => {
   return `
-    max-width: ${containerSize[size]};
+    ${BreakObj[size].container.maxWidth}
     margin: auto;
   `
-}
+};

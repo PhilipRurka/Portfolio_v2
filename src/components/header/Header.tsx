@@ -1,4 +1,4 @@
-import { Link } from 'gatsby';
+
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { FC } from 'react';
 import { HeaderQuery } from '../../../@types/generated/graphql';
@@ -17,7 +17,8 @@ import {
   LinkedinSocial,
   GithubIcon,
   LinkedinIcon,
-  LogoLink
+  LogoLink,
+  Link
 } from './Header.styled';
 
 const Header: FC<QueryData<HeaderQuery>> = (props) => {
