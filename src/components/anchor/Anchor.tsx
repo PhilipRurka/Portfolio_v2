@@ -76,7 +76,6 @@ const Anchor: FC<any> = (props) => {
     const { current: anchor } = trueAnchor_ref;
     if(anchorWidth || !anchor?.clientWidth) return;
     const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
-      debugger
       setAnchorWidth(anchor.clientWidth);
     }, 100);
 

@@ -6,7 +6,7 @@ export const Reset = createGlobalStyle`
   ${reset}
 
   body {
-    ${Fonts.secondary}
+    font-family: 'Noto Sans'
   }
 
   a,
