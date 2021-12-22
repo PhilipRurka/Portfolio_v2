@@ -8,6 +8,7 @@ import Header from "./header/Header.container";
 
 const Layout: FC<PageProps> = (props) => {
   const { children } = props;
+
   return (
     <LayoutStyled>
       <FontStyles />
