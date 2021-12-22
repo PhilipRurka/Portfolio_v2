@@ -13,4 +13,8 @@ export const Reset = createGlobalStyle`
   span {
     display: block;
   }
+
+  a {
+    text-decoration: none;
+  }
 `;

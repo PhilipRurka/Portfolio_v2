@@ -22,7 +22,6 @@ import {
 } from './Header.styled';
 
 const Header: FC<QueryData<HeaderQuery>> = (props) => {
-
   const menuLinks = props.queryData.site?.siteMetadata?.menuLinks;
 
   return (
@@ -46,16 +45,12 @@ const Header: FC<QueryData<HeaderQuery>> = (props) => {
             hey@<strong>philiprurka</strong>.com
           </Email>
           <GithubSocial
-            href='https://github.com/philiprurka'
-            target='_blank'
-            rel="noopener noreferrer"
+            to='https://github.com/philiprurka'
             aria-label='Github Profile Link, opens in another window' >
             <GithubIcon />
           </GithubSocial>
           <LinkedinSocial
-            href='https://www.linkedin.com/in/philiprurka/'
-            target='_blank'
-            rel="noopener noreferrer"
+            to='https://www.linkedin.com/in/philiprurka/'
             aria-label='Linkedin Profile Link, opens in another window' >
             <LinkedinIcon />
           </LinkedinSocial>
@@ -68,7 +63,9 @@ const Header: FC<QueryData<HeaderQuery>> = (props) => {
 
             return (
               <LinkWrapper key={`pagelink-${i}`}>
-                <Link to={item.link} >
+                <Link
+                  to={item.link}
+                  activeType='current' >
                   {item.name}
                 </Link>
               </LinkWrapper>

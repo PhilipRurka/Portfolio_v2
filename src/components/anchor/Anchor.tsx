@@ -7,50 +7,44 @@ import {
   Hover
 } from './Anchor.styled';
 
-interface LateAttr_type {
-  to: string;
-  target?: '_blank'
-  rel?: 'noopener noreferrer'
-}
+type LateAttrInner_type = { to: string; }
 
-const TrueAnchor: FC<any> =React.forwardRef((props, ref) => {
+type LateAttrExternal_type = {
+  href: string;
+  target?: '_blank';
+  rel?: 'noopener noreferrer';
+};
+
+type LateAttr_type = LateAttrInner_type | LateAttrExternal_type;
+
+const TrueAnchor: FC<any> = React.forwardRef((props, ref) => {
   const {
     children,
     to,
+    activeType,
     ...attrs
   } = props;
 
   let lateAttrs: LateAttr_type;
+  let activeTypeAttr: { activeClassName: "acive" } | {} = {};
 
   if(to.includes('://') || to.includes('mailto:')) {
     lateAttrs = {
-      to,
+      href: to,
       target: '_blank',
       rel: 'noopener noreferrer'
-    };
+    } as LateAttrExternal_type;
 
     if(to.includes('mailto:')) {
-      lateAttrs = { to };
+      lateAttrs = { href: to };
 
     } else {
       lateAttrs = {
-        to,
+        href: to,
         target: '_blank',
         rel: 'noopener noreferrer'
-      };
+      } as LateAttrExternal_type;
     };
-
-    return (
-      <GatsbyLinkAnchor
-        {...attrs}
-        {...lateAttrs}
-        ref={ref} >
-        {children}
-      </GatsbyLinkAnchor>
-    );
-
-  } else {
-    lateAttrs = { to };
 
     return (
       <BasicAnchor
@@ -60,12 +54,31 @@ const TrueAnchor: FC<any> =React.forwardRef((props, ref) => {
         {children}
       </BasicAnchor>
     );
+
+  } else {
+    if(activeType === 'current') {
+      activeTypeAttr = { activeClassName: "active" }
+    }
+    
+    lateAttrs = { to, } as LateAttrInner_type;
+
+    return (
+      <GatsbyLinkAnchor
+        {...attrs}
+        {...activeTypeAttr}
+        {...lateAttrs}
+        ref={ref} >
+        {children}
+      </GatsbyLinkAnchor>
+    );
   };
 });
 
 const Anchor: FC<any> = (props) => {
   const {
     children,
+    className,
+    activeType,
     ...attrs
   } = props;
 
@@ -77,7 +90,7 @@ const Anchor: FC<any> = (props) => {
     if(anchorWidth || !anchor?.clientWidth) return;
     const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
       setAnchorWidth(anchor.clientWidth);
-    }, 100);
+    }, 50);
 
     return () => {
       clearTimeout(timeout);
@@ -87,14 +100,31 @@ const Anchor: FC<any> = (props) => {
   const pseudoWidth: string = (anchorWidth || 0).toString();
   
   return (
-    <AnchorStyled pseudoWidth={pseudoWidth}>
+    <AnchorStyled pseudoWidth={pseudoWidth} >
       <TrueAnchor
         {...attrs}
+        activeType={activeType}
+        className={className}
         ref={trueAnchor_ref} >
         {children}
       </TrueAnchor>
-      <Hover>{children}</Hover>
-      <Active>{children}</Active>
+      {activeType && (
+        <Active
+          href='#'
+          className={className}
+          aria-hidden
+          tabIndex={-1}
+          activeType={activeType} >
+          {children}
+        </Active>
+      )}
+      <Hover
+        href='#'
+        className={className}
+        aria-hidden
+        tabIndex={-1} >
+        {children}
+      </Hover>
     </AnchorStyled>
   );
 };

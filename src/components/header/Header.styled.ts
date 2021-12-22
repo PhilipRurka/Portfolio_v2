@@ -1,12 +1,11 @@
 import { Link as GatsbyLink } from 'gatsby';
 import styled from 'styled-components';
 import { Container } from '../../styled/layout';
-import { Colors, Fonts } from '../../styled/variables';
+import { Colors } from '../../styled/variables';
 import Anchor from '../anchor/Anchor';
 import { Github, Linkedin } from '../svgs';
 
 const socialIcon_share: string = `
-  color: ${Colors.persimmon};
   margin-left: 20px;
 
   &,
@@ -70,9 +69,8 @@ export const LinkWrapper = styled.li`
   
 `;
 
-export const Link = styled(GatsbyLink)`
+export const Link = styled(Anchor)`
    padding: 20px 30px;
-   color: ${Colors.persimmon};
    text-decoration: none;
 `;
 
@@ -82,10 +80,11 @@ export const SocialLinks = styled.div`
 `;
 
 export const Email = styled(Anchor)`
+  font-size: 14px;
   flex: 1;
 `;
 
-export const GithubSocial = styled.a`
+export const GithubSocial = styled(Anchor)`
   ${socialIcon_share}
 
 `;
@@ -94,7 +93,7 @@ export const GithubIcon = styled(Github)`
    
 `;
 
-export const LinkedinSocial = styled.a`
+export const LinkedinSocial = styled(Anchor)`
   ${socialIcon_share}
   
 `;

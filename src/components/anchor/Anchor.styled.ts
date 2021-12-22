@@ -15,15 +15,14 @@ const anchor = `
   }
 `;
 
-const PseudoAnchor = styled.span`
+const PseudoAnchor = styled.a`
   position: absolute;
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  padding: 5px 0;
   width: 100%;
   max-width: 0;
-  color: ${Colors.dodger};
+  padding-right: 0 !important;
   overflow: hidden;
   pointer-events: none;
   transition: max-width 0.3s ease-in-out;
@@ -42,16 +41,23 @@ export const AnchorStyled = styled.div<Pseudo_type>`
       max-width: ${props => props.pseudoWidth}px;
     }
   }
+
+  .active ~ [class*='Active'] {
+    max-width: ${props => props.pseudoWidth}px;
+  }
 `;
 
 export const GatsbyLinkAnchor = styled(GatsbyLink)`${anchor}`;
 
-export const BasicAnchor = styled.a`${anchor}`;
-
-export const Hover = styled(PseudoAnchor)`
-  
+export const BasicAnchor = styled.a`
+  ${anchor}
+  color: ${Colors.persimmon};
 `;
 
-export const Active = styled(PseudoAnchor)`
-  
+export const Active = styled(PseudoAnchor)<{ activeType: string }>`
+  color: ${Colors.eucalyptus};
+`;
+
+export const Hover = styled(PseudoAnchor)`
+  color: ${Colors.dodger};
 `;
