@@ -36,7 +36,7 @@ export const BrandingLinks = styled.div`
     top: 100%;
     left: 0;
     width: 100vw;
-    height: 3px;
+    height: 4px;
     background-color: black;
   }
 `;
@@ -70,8 +70,42 @@ export const LinkWrapper = styled.li`
 `;
 
 export const Link = styled(Anchor)`
-   padding: 20px 30px;
-   text-decoration: none;
+  padding: 20px 30px;
+  text-decoration: none;
+
+  & ~ [class*='Hover'],
+  & ~ [class*='Active'] {
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: calc(100% - 30px);
+      height: 4px;
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+  }
+
+  & ~ [class*='Hover'] {
+    &::before,
+    &::after {
+      background-color: ${Colors.dodger};
+    }
+  }
+
+  & ~ [class*='Active'] {
+    &::before,
+    &::after {
+      background-color: ${Colors.eucalyptus};
+    }
+  }
 `;
 
 export const SocialLinks = styled.div`
@@ -82,6 +116,7 @@ export const SocialLinks = styled.div`
 export const Email = styled(Anchor)`
   font-size: 14px;
   flex: 1;
+  letter-spacing: 0.5px;
 `;
 
 export const GithubSocial = styled(Anchor)`

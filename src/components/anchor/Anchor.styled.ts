@@ -35,6 +35,7 @@ const PseudoAnchor = styled.a`
 export const AnchorStyled = styled.div<Pseudo_type>`
   position: relative;
   display: table;
+  overflow: hidden;
 
   &:hover {
     [class*='Hover'] {

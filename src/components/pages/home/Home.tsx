@@ -8,6 +8,7 @@ interface Home_type {
 };
 
 const Home: FC<any> = (props) => {
+  console.log('This Is Home!')
 
   return (
     <HomeStyled>
