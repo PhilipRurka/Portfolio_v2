@@ -1,9 +1,13 @@
 import { Link as GatsbyLink } from 'gatsby';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { BreakObj, Container } from '../../styled/layout';
 import { Colors } from '../../styled/variables';
 import Anchor from '../anchor/Anchor';
 import { Github, Linkedin } from '../svgs';
+
+type MobileNavWrapper_type = {
+  mobileNavActive: boolean;
+}
 
 const socialIcon_share: string = `
   margin-left: 20px;
@@ -21,9 +25,15 @@ export const HeaderStyled = styled.div`
   flex-direction: column;
   padding: 30px 50px 0;
   overflow: hidden;
+  z-index: 2;
 
   ${BreakObj.xs.breakpoint.media} {
-    padding-bottom: 3px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 13px;
+    background-color: white;
 
     .gatsby-image-wrapper > div {
       max-width: 40px !important;
@@ -55,13 +65,13 @@ export const PageLinks = styled.div`
   }
 `;
 
-export const BurgerNav = styled.button(() => {
+export const BurgerButton = styled.button(() => {
   const containerHeight: number = 35;
   const lineHeight: number = 2;
   const spacing: number = (containerHeight - lineHeight) / 7;
   const dimention: number = containerHeight - spacing;
 
-  return `
+  return css`
     display: none;
     position: relative;
     height: ${dimention}px;
@@ -211,18 +221,26 @@ export const Email = styled(Anchor)`
 
 export const GithubSocial = styled(Anchor)`
   ${socialIcon_share}
-
 `;
 
-export const GithubIcon = styled(Github)`
-   
-`;
+export const GithubIcon = styled(Github)``;
 
 export const LinkedinSocial = styled(Anchor)`
   ${socialIcon_share}
-  
 `;
 
-export const LinkedinIcon = styled(Linkedin)`
+export const LinkedinIcon = styled(Linkedin)``;
 
+export const MobileNavWrapper = styled.div<MobileNavWrapper_type>`
+  position: fixed;
+  top: 99px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  opacity: 0;
+`;
+
+export const MobileNavContainer = styled.div`
+  
 `;

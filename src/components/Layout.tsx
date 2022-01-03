@@ -13,7 +13,7 @@ const Layout: FC<PageProps> = (props) => {
     <LayoutStyled>
       <FontStyles />
       <Reset />
-      <Head />
+      <Head  />
       <Header />
       {children}
     </LayoutStyled>

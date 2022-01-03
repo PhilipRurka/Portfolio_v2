@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const LayoutStyled = styled.div`
-
-`;
-
 export const BreakObj = {
   xs: {
     breakpoint: {
@@ -63,3 +59,10 @@ export const Container = (size: keyof typeof BreakObj): string => {
     margin: auto;
   `
 };
+
+export const LayoutStyled = styled.div`
+
+  ${BreakObj.xs.breakpoint.media} {
+    padding-top: 100px;
+  }
+`;
