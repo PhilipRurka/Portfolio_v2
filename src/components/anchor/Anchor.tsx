@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Active,
   AnchorStyled,
@@ -7,6 +7,7 @@ import {
   Hover
 } from './Anchor.styled';
 
+//#region Types
 type LateAttrInner_type = { to: string; }
 
 type LateAttrExternal_type = {
@@ -16,7 +17,68 @@ type LateAttrExternal_type = {
 };
 
 type LateAttr_type = LateAttrInner_type | LateAttrExternal_type;
+//#endregion
 
+//#region Anchor
+const Anchor: FC<any> = (props) => {
+  const {
+    children,
+    className,
+    activeType,
+    ...attrs
+  } = props;
+
+  const trueAnchor_ref = useRef<HTMLSpanElement>();
+  const [anchorMaxWidth, setAnchorMaxWidth] = useState<number | null>(null);
+
+  useEffect(() => {
+    const { current: anchor } = trueAnchor_ref;
+    if(anchorMaxWidth || !anchor?.clientWidth) return;
+    const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
+      setAnchorMaxWidth(anchor.clientWidth);
+    }, 50);
+
+    return () => {
+      clearTimeout(timeout);
+    }
+  }, [trueAnchor_ref]);
+
+  const pseudoWidth = useMemo(() => {
+    return (anchorMaxWidth || 0).toString();
+  }, [anchorMaxWidth]);
+  
+  return (
+    <AnchorStyled pseudoWidth={pseudoWidth} >
+      <TrueAnchor
+        {...attrs}
+        activeType={activeType}
+        className={`trueAnchor ${className}`}
+        ref={trueAnchor_ref} >
+        {children}
+      </TrueAnchor>
+      {activeType && (
+        <Active
+          href='#'
+          className={className}
+          aria-hidden
+          tabIndex={-1}
+          activeType={activeType} >
+          {children}
+        </Active>
+      )}
+      <Hover
+        href='#'
+        className={className}
+        aria-hidden
+        tabIndex={-1} >
+        {children}
+      </Hover>
+    </AnchorStyled>
+  );
+};
+//#endregion
+
+//#region TrueAnchor
 const TrueAnchor: FC<any> = React.forwardRef((props, ref) => {
   const {
     children,
@@ -26,7 +88,7 @@ const TrueAnchor: FC<any> = React.forwardRef((props, ref) => {
   } = props;
 
   let lateAttrs: LateAttr_type;
-  let activeTypeAttr: { activeClassName: "acive" } | {} = {};
+  let activeTypeAttr: { activeClassName: "active" } | {} = {};
 
   if(to.includes('://') || to.includes('mailto:')) {
     lateAttrs = {
@@ -73,60 +135,6 @@ const TrueAnchor: FC<any> = React.forwardRef((props, ref) => {
     );
   };
 });
-
-const Anchor: FC<any> = (props) => {
-  const {
-    children,
-    className,
-    activeType,
-    ...attrs
-  } = props;
-
-  const trueAnchor_ref = useRef<HTMLSpanElement>();
-  const [anchorWidth, setAnchorWidth] = useState<number | null>(null);
-
-  useEffect(() => {
-    const { current: anchor } = trueAnchor_ref;
-    if(anchorWidth || !anchor?.clientWidth) return;
-    const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
-      setAnchorWidth(anchor.clientWidth);
-    }, 50);
-
-    return () => {
-      clearTimeout(timeout);
-    }
-  }, [trueAnchor_ref]);
-
-  const pseudoWidth: string = (anchorWidth || 0).toString();
-  
-  return (
-    <AnchorStyled pseudoWidth={pseudoWidth} >
-      <TrueAnchor
-        {...attrs}
-        activeType={activeType}
-        className={className}
-        ref={trueAnchor_ref} >
-        {children}
-      </TrueAnchor>
-      {activeType && (
-        <Active
-          href='#'
-          className={className}
-          aria-hidden
-          tabIndex={-1}
-          activeType={activeType} >
-          {children}
-        </Active>
-      )}
-      <Hover
-        href='#'
-        className={className}
-        aria-hidden
-        tabIndex={-1} >
-        {children}
-      </Hover>
-    </AnchorStyled>
-  );
-};
+//#endregion
 
 export default Anchor;

@@ -1,10 +1,10 @@
 
 import { StaticImage } from 'gatsby-plugin-image';
-import React, { FC } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { HeaderQuery } from '../../../@types/generated/graphql';
 import {
   HeaderStyled,
-  // BurgerNav,
+  BurgerNav,
   // MobileNav,
   Branding,
   BrandingLinks,
@@ -22,7 +22,12 @@ import {
 } from './Header.styled';
 
 const Header: FC<QueryData<HeaderQuery>> = (props) => {
+  const [openedBurger, setOpenedBurger] = useState<boolean>(false);
   const menuLinks = props.queryData.site?.siteMetadata?.menuLinks;
+
+  const handleBurgerClick = useCallback((): void => {
+    setOpenedBurger(!openedBurger);
+  }, [openedBurger]);
 
   return (
     <HeaderStyled>
@@ -30,7 +35,7 @@ const Header: FC<QueryData<HeaderQuery>> = (props) => {
         <Branding>
           <LogoLink
             to='/'
-            aria-label='Github Profile Link' >
+            aria-label='Homepage Link' >
             <StaticImage
               src='../../images/philip-rurka-logo.png'
               width={69}
@@ -55,6 +60,13 @@ const Header: FC<QueryData<HeaderQuery>> = (props) => {
             <LinkedinIcon />
           </LinkedinSocial>
         </SocialLinks>
+        <BurgerNav
+          className={openedBurger ? 'opened' : ''}
+          aria-label='Open Mobile Menu'
+          onClick={handleBurgerClick} >
+          <span aria-hidden />
+          <span aria-hidden />
+        </BurgerNav>
       </BrandingLinks>
       <PageLinks>
         <Links>
@@ -73,10 +85,7 @@ const Header: FC<QueryData<HeaderQuery>> = (props) => {
           })}
         </Links>
       </PageLinks>
-      {/* <BurgerNav>
-
-      </BurgerNav>
-      <MobileNav>
+      {/* <MobileNav>
 
       </MobileNav> */}
     </HeaderStyled>

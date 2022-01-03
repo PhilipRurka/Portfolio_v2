@@ -5,6 +5,10 @@ import { Fonts } from './variables';
 export const Reset = createGlobalStyle`
   ${reset}
 
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     font-family: 'Noto Sans'
   }
@@ -16,5 +20,12 @@ export const Reset = createGlobalStyle`
 
   a {
     text-decoration: none;
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
   }
 `;

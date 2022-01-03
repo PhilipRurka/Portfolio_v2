@@ -8,7 +8,7 @@ export const BreakObj = {
   xs: {
     breakpoint: {
       break: 576,
-      media: '@media (min-width: 576px)',
+      media: '@media (max-width: 576px)',
     },
     container: {
       value: 540,
@@ -18,7 +18,7 @@ export const BreakObj = {
   sm: {
     breakpoint: {
       break: 767,
-      media: '@media (max-width: 767px)',
+      media: '@media (min-width: 767px)',
     },
     container: {
       value: 720,
@@ -28,7 +28,7 @@ export const BreakObj = {
   md: {
     breakpoint: {
       break: 991,
-      media: '@media (max-width: 991px)',
+      media: '@media (min-width: 991px)',
     },
     container: {
       value: 960,
@@ -38,7 +38,7 @@ export const BreakObj = {
   lg: {
     breakpoint: {
       break: 1199,
-      media: '@media (max-width: 1199px)',
+      media: '@media (min-width: 1199px)',
     },
     container: {
       value: 1140,
@@ -48,7 +48,7 @@ export const BreakObj = {
   xl: {
     breakpoint: {
       break: 1399,
-      media: '@media (max-width: 1399px)',
+      media: '@media (min-width: 1399px)',
     },
     container: {
       value: 1320,

@@ -20,7 +20,6 @@ const PseudoAnchor = styled.a`
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  width: 100%;
   max-width: 0;
   padding-right: 0 !important;
   overflow: hidden;
@@ -48,11 +47,16 @@ export const AnchorStyled = styled.div<Pseudo_type>`
   }
 `;
 
-export const GatsbyLinkAnchor = styled(GatsbyLink)`${anchor}`;
+export const GatsbyLinkAnchor = styled(GatsbyLink)`
+  ${anchor}
+
+  &.active ~ [class*='Hover'] {
+    display: none;
+  }
+`;
 
 export const BasicAnchor = styled.a`
   ${anchor}
-  color: ${Colors.persimmon};
 `;
 
 export const Active = styled(PseudoAnchor)<{ activeType: string }>`
