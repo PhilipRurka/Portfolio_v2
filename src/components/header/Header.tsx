@@ -8,8 +8,10 @@ import {
   Branding,
   BrandingLinks,
   PageLinks,
-  Links,
-  LinkWrapper,
+  Links_Desktop,
+  Links_Mobile,
+  LinkWrapper_Desktop,
+  LinkWrapper_Mobile,
   SocialLinks,
   Email,
   GithubSocial,
@@ -17,7 +19,8 @@ import {
   GithubIcon,
   LinkedinIcon,
   LogoLink,
-  Link,
+  Link_Desktop,
+  Link_Mobile,
   MobileNavWrapper,
   MobileNavContainer
 } from './Header.styled';
@@ -51,7 +54,7 @@ const Header: FC<Header_type> = (props) => {
               alt="Philip Rurka Logo" />
           </LogoLink>
         </Branding>
-        <SocialLinks>
+        <SocialLinks className='desktop-only'>
           <Email to='mailto:hey@philiprurka.com'>
             hey@<strong>philiprurka</strong>.com
           </Email>
@@ -75,28 +78,57 @@ const Header: FC<Header_type> = (props) => {
         </BurgerButton>
       </BrandingLinks>
       <PageLinks>
-        <Links>
+        <Links_Desktop>
           {menuLinks && menuLinks.map((item, i) => {
             if(!item || !item.link || !item.name) return <></>
 
             return (
-              <LinkWrapper key={`pagelink-${i}`}>
-                <Link
+              <LinkWrapper_Desktop key={`pagelink-${i}`}>
+                <Link_Desktop
                   to={item.link}
                   activeType='current' >
                   {item.name}
-                </Link>
-              </LinkWrapper>
+                </Link_Desktop>
+              </LinkWrapper_Desktop>
             )
           })}
-        </Links>
+        </Links_Desktop>
       </PageLinks>
       <MobileNavWrapper
         id='mobileMenu'
         mobileNavActive={openedBurger}
         aria-hidden={!openedBurger} >
         <MobileNavContainer>
+        <Links_Mobile>
+          {menuLinks && menuLinks.map((item, i) => {
+            if(!item || !item.link || !item.name) return <></>
 
+            return (
+              <LinkWrapper_Mobile key={`pagelink-${i}`}>
+                <Link_Mobile
+                  to={item.link}
+                  activeType='current' >
+                  {item.name}
+                </Link_Mobile>
+              </LinkWrapper_Mobile>
+            )
+          })}
+        </Links_Mobile>
+          <Email to='mailto:hey@philiprurka.com'>
+            hey@<strong>philiprurka</strong>.com
+          </Email>
+          <SocialLinks>
+            <GithubSocial
+              to='https://github.com/philiprurka'
+              aria-label='Github Profile Link, opens in another window' >
+              <GithubIcon />
+            </GithubSocial>
+            <LinkedinSocial
+              to='https://www.linkedin.com/in/philiprurka/'
+              aria-label='Linkedin Profile Link, opens in another window' >
+              <LinkedinIcon />
+            </LinkedinSocial>
+          </SocialLinks>
         </MobileNavContainer>
       </MobileNavWrapper>
     </HeaderStyled>

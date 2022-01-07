@@ -23,7 +23,7 @@ export const HeaderStyled = styled.div`
   ${Container('md')}
   display: flex;
   flex-direction: column;
-  padding: 30px 50px 0;
+  padding-top: 30px;
   overflow: hidden;
   z-index: 2;
 
@@ -34,6 +34,10 @@ export const HeaderStyled = styled.div`
     width: 100%;
     padding-bottom: 13px;
     background-color: white;
+
+    .desktop-only {
+      display: none;
+    }
 
     .gatsby-image-wrapper > div {
       max-width: 40px !important;
@@ -61,7 +65,7 @@ export const BrandingLinks = styled.div`
 
 export const PageLinks = styled.div`
   ${BreakObj.xs.breakpoint.media} {
-    display : none;
+    display: none;
   }
 `;
 
@@ -155,7 +159,7 @@ export const BurgerButton = styled.button(() => {
     }
 
     ${BreakObj.xs.breakpoint.media} {
-      display : block;
+      display: block;
     }
   `}
 );
@@ -172,11 +176,11 @@ export const LogoLink = styled(GatsbyLink)`
 
 `;
 
-export const Links = styled.ul`
+export const Links_Desktop = styled.ul`
   display: flex;
 `;
 
-export const LinkWrapper = styled.li`
+export const LinkWrapper_Desktop = styled.li`
   [class*='Active'] {
     /* &::before,
     &::after {
@@ -199,7 +203,7 @@ export const LinkWrapper = styled.li`
   
 `;
 
-export const Link = styled(Anchor)`
+export const Link_Desktop = styled(Anchor)`
   text-decoration: none;
   padding: 20px 30px;
 `;
@@ -209,7 +213,7 @@ export const SocialLinks = styled.div`
   align-items: center;
 
   ${BreakObj.xs.breakpoint.media} {
-    display : none;
+    margin-top: 15px;
   }
 `;
 
@@ -217,10 +221,18 @@ export const Email = styled(Anchor)`
   font-size: 14px;
   flex: 1;
   letter-spacing: 0.5px;
+
+  ${BreakObj.xs.breakpoint.media} {
+    margin-top: 15px;
+  }
 `;
 
 export const GithubSocial = styled(Anchor)`
   ${socialIcon_share}
+
+  ${BreakObj.xs.breakpoint.media} {
+    margin: 0;
+  }
 `;
 
 export const GithubIcon = styled(Github)``;
@@ -239,8 +251,22 @@ export const MobileNavWrapper = styled.div<MobileNavWrapper_type>`
   bottom: 0;
   background-color: white;
   opacity: 0;
+  pointer-events: ${props => props.mobileNavActive ? 'initial' : 'none'};
 `;
 
 export const MobileNavContainer = styled.div`
+  ${Container('md')}
+  margin-top: 20px;
+`;
+
+export const Links_Mobile = styled.ul`
+  
+`;
+
+export const LinkWrapper_Mobile = styled.li`
+  
+`;
+
+export const Link_Mobile = styled(Anchor)`
   
 `;

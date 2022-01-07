@@ -17,9 +17,8 @@ const anchor = `
 
 const PseudoAnchor = styled.a`
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 0;
-  transform: translateY(-50%);
   max-width: 0;
   padding-right: 0 !important;
   overflow: hidden;

@@ -13,6 +13,7 @@ const HeaderContainer: FC = () => {
   const isXs = IsXs();
 
   const handleBurgerClick = useCallback((): void => {
+    console.log('Blonk');
     setOpenedBurger(!openedBurger);
   }, [openedBurger]);
 
@@ -33,6 +34,7 @@ const HeaderContainer: FC = () => {
   }, []);
 
   useEffect(() => {
+    console.log('Hit');
     if(!isXs) setOpenedBurger(false);
   }, [isXs]);
 
@@ -45,7 +47,7 @@ const HeaderContainer: FC = () => {
 
     } else {
       mobileNav_tl.current.reverse();
-    }
+    };
 
     return () => {
       if(typeof window === 'undefined' || !openedBurger) return;

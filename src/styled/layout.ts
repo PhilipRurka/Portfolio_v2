@@ -57,6 +57,8 @@ export const Container = (size: keyof typeof BreakObj): string => {
   return `
     ${BreakObj[size].container.maxWidth}
     margin: auto;
+    padding-left: 50px;
+    padding-right: 50px;
   `
 };
 
