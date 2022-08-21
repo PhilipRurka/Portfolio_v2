@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 import { Colors } from '../../styled/variables';
 
-interface Pseudo_type {
+interface Pseudo_Type {
   pseudoWidth: string;
 }
 
@@ -30,7 +30,7 @@ const PseudoAnchor = styled.a`
   }
 `;
 
-export const AnchorStyled = styled.div<Pseudo_type>`
+export const AnchorStyled = styled.div<Pseudo_Type>`
   position: relative;
   display: table;
   overflow: hidden;
@@ -46,19 +46,23 @@ export const AnchorStyled = styled.div<Pseudo_type>`
   }
 `;
 
-export const GatsbyLinkAnchor = styled(GatsbyLink)`
+export const GatsbyLinkAnchor = styled(GatsbyLink)<Pseudo_Type>`
   ${anchor}
 
-  &.active ~ [class*='Hover'] {
-    display: none;
+  &:focus ~ [class*='Hover'] {
+    max-width: ${props => props.pseudoWidth}px;
+  }
+`
+
+export const BasicAnchor = styled.a<Pseudo_Type>`
+  ${anchor}
+
+  &:focus ~ [class*='Hover'] {
+    max-width: ${props => props.pseudoWidth}px;
   }
 `;
 
-export const BasicAnchor = styled.a`
-  ${anchor}
-`;
-
-export const Active = styled(PseudoAnchor)<{ activeType: string }>`
+export const Active = styled(PseudoAnchor)`
   color: ${Colors.eucalyptus};
 `;
 

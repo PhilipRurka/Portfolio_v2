@@ -4,7 +4,7 @@ import { Reset } from "../styled/base";
 import FontStyles from "../styled/fonts";
 import { LayoutStyled } from "../styled/layout";
 import Head from "./Head";
-import Header from "./header/Header.container";
+import Header from "./header";
 
 const Layout: FC<PageProps> = (props) => {
   const { children } = props;

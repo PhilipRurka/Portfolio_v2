@@ -1,12 +1,8 @@
-
-import { StaticImage } from 'gatsby-plugin-image';
 import React, { FC } from 'react';
 import { HeaderQuery } from '../../../@types/generated/graphql';
+import { BrandingLinks } from './components';
 import {
   HeaderStyled,
-  BurgerButton,
-  Branding,
-  BrandingLinks,
   PageLinks,
   Links_Desktop,
   Links_Mobile,
@@ -18,7 +14,6 @@ import {
   LinkedinSocial,
   GithubIcon,
   LinkedinIcon,
-  LogoLink,
   Link_Desktop,
   Link_Mobile,
   MobileNavWrapper,
@@ -40,43 +35,9 @@ const Header: FC<Header_type> = (props) => {
 
   return (
     <HeaderStyled>
-      <BrandingLinks>
-        <Branding>
-          <LogoLink
-            to='/'
-            aria-label='Homepage Link' >
-            <StaticImage
-              src='../../images/philip-rurka-logo.png'
-              width={69}
-              height={80}
-              objectFit='contain'
-              placeholder='tracedSVG'
-              alt="Philip Rurka Logo" />
-          </LogoLink>
-        </Branding>
-        <SocialLinks className='desktop-only'>
-          <Email to='mailto:hey@philiprurka.com'>
-            hey@<strong>philiprurka</strong>.com
-          </Email>
-          <GithubSocial
-            to='https://github.com/philiprurka'
-            aria-label='Github Profile Link, opens in another window' >
-            <GithubIcon />
-          </GithubSocial>
-          <LinkedinSocial
-            to='https://www.linkedin.com/in/philiprurka/'
-            aria-label='Linkedin Profile Link, opens in another window' >
-            <LinkedinIcon />
-          </LinkedinSocial>
-        </SocialLinks>
-        <BurgerButton
-          className={openedBurger ? 'opened' : ''}
-          aria-label='Open Mobile Menu'
-          onClick={handleBurgerClick} >
-          <span aria-hidden />
-          <span aria-hidden />
-        </BurgerButton>
-      </BrandingLinks>
+      <BrandingLinks
+        openedBurger={openedBurger}
+        handleBurgerClick={handleBurgerClick} />
       <PageLinks>
         <Links_Desktop>
           {menuLinks && menuLinks.map((item, i) => {

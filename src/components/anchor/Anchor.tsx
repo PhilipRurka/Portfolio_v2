@@ -53,19 +53,10 @@ const Anchor: FC<any> = (props) => {
         {...attrs}
         activeType={activeType}
         className={`trueAnchor ${className}`}
-        ref={trueAnchor_ref} >
+        ref={trueAnchor_ref}
+        pseudoWidth={pseudoWidth} >
         {children}
       </TrueAnchor>
-      {activeType && (
-        <Active
-          href='#'
-          className={className}
-          aria-hidden
-          tabIndex={-1}
-          activeType={activeType} >
-          {children}
-        </Active>
-      )}
       <Hover
         href='#'
         className={className}
@@ -73,6 +64,15 @@ const Anchor: FC<any> = (props) => {
         tabIndex={-1} >
         {children}
       </Hover>
+      {activeType && (
+        <Active
+          href='#'
+          className={className}
+          aria-hidden
+          tabIndex={-1} >
+          {children}
+        </Active>
+      )}
     </AnchorStyled>
   );
 };
@@ -84,6 +84,7 @@ const TrueAnchor: FC<any> = React.forwardRef((props, ref) => {
     children,
     to,
     activeType,
+    pseudoWidth,
     ...attrs
   } = props;
 
@@ -112,6 +113,7 @@ const TrueAnchor: FC<any> = React.forwardRef((props, ref) => {
       <BasicAnchor
         {...attrs}
         {...lateAttrs}
+        pseudoWidth={pseudoWidth}
         ref={ref} >
         {children}
       </BasicAnchor>
@@ -129,7 +131,8 @@ const TrueAnchor: FC<any> = React.forwardRef((props, ref) => {
         {...attrs}
         {...activeTypeAttr}
         {...lateAttrs}
-        ref={ref} >
+        ref={ref}
+        pseudoWidth={pseudoWidth} >
         {children}
       </GatsbyLinkAnchor>
     );

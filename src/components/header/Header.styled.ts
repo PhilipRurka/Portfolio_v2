@@ -45,7 +45,7 @@ export const HeaderStyled = styled.div`
   }
 `;
 
-export const BrandingLinks = styled.div`
+export const BrandingLinksStyled = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
