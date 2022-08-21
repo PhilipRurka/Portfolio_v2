@@ -30,7 +30,7 @@ const BrandingLinks: FC<BrandingLinks_Type> = ({
           to='/'
           aria-label='Homepage Link' >
           <StaticImage
-            src='../../images/philip-rurka-logo.png'
+            src='../../../../images/philip-rurka-logo.png'
             width={69}
             height={80}
             objectFit='contain'

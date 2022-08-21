@@ -12,13 +12,15 @@ const HeaderContainer: FC = () => {
   const [openedBurger, setOpenedBurger] = useState<boolean>(false);
   const isXs = IsXs();
 
-  const handleBurgerClick = useCallback((): void => {
+  const handleBurgerClick = () => {
     setOpenedBurger(!openedBurger);
-  }, [openedBurger]);
+  };
 
-  const handleKeydown = useCallback((event: KeyboardEvent): void => {
-    if(event.key === 'Escape') setOpenedBurger(false);
-  }, []);
+  const handleKeydown = (event: KeyboardEvent) => {
+    if(event.key === 'Escape') {
+      setOpenedBurger(false);
+    }
+  };
 
   const initGsap = useCallback((): void => {
     mobileNav_tl.current.to('#mobileMenu', {

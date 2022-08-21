@@ -36,7 +36,7 @@ const Anchor: FC<any> = (props) => {
     if(anchorMaxWidth || !anchor?.clientWidth) return;
     const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
       setAnchorMaxWidth(anchor.clientWidth);
-    }, 50);
+    }, 100);
 
     return () => {
       clearTimeout(timeout);
