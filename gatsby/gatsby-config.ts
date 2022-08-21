@@ -1,5 +1,4 @@
 import dotenv from 'dotenv';
-import { HeaderQuery } from '../@types/generated/graphql';
 dotenv.config({
   path: '.env'
 })
@@ -26,13 +25,14 @@ export default {
       }
     ]
   },
+  graphqlTypegen: true,
   plugins: [
-    "gatsby-plugin-styled-components",
-    "gatsby-plugin-sitemap",
-    `gatsby-plugin-typescript`,
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-typescript',
     'gatsby-plugin-react-helmet',
-    `gatsby-plugin-image`,
-    `gatsby-transformer-sharp`,
+    'gatsby-plugin-image',
+    'gatsby-transformer-sharp',
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
@@ -48,15 +48,5 @@ export default {
         spaceId: GATSBY_SPACE_ID,
       },
     },
-    {
-      resolve: `gatsby-plugin-graphql-codegen`,
-      options: {
-        fileName: `./@types/generated/graphql.d.ts`,
-        documentPaths: [
-          './src/**/*.{ts,tsx}',
-          './node_modules/gatsby*/!(node_modules)/**/*.js'
-        ]
-      }
-    }
   ]
 };
